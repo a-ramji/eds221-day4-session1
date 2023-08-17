@@ -7,6 +7,11 @@ editor: visual
 
 ## Functions
 
+```{r}
+library(tidyverse)
+library(here)
+```
+
 make a function that doubles a value.
 
 ```{r}
@@ -153,4 +158,71 @@ convert_kelvin(initial_temp_k = 40, scale = "metric")
 convert_kelvin(100, "metric")
 convert_kelvin(100, "english")
 convert_kelvin(100, "kelvin")
+```
+
+### After Lunch :) 
+
+## More functions
+
+Create a subset within a function and then return something based on that subset.
+
+```{r}
+dog_choice <- data.frame(dog_name = c("Khora", "Teddy", "Waffle", "Banjo", "Tallie"), 
+                         food = c("everything", "salmon", "pancakes", "chicken", "enchiladas"))
+
+```
+
+create a function that returns a string - this dog's favorite food is \_\_\_.
+
+```{r}
+
+dog_menu <- function(enter_dog_name) {
+  my_subset <- filter(dog_choice, dog_name == enter_dog_name)
+  print(paste("My name is", my_subset$dog_name, "and my favorite food is", my_subset$food))
+}
+```
+
+```{r}
+# we can run the following line in the console to check our data / work 
+# filter(dog_choice, dog_name == "Waffle")
+```
+
+```{r}
+# or like this
+dog_choice |> 
+  filter(dog_name == "Waffle")
+```
+
+```{r}
+dog_menu("Waffle")
+
+dog_menu(enter_dog_name = "Waffle")
+```
+
+## Function with a for loop
+
+manually create a function that iterates over the columns in the data frame, calculates mean values, stores them, and has an output that states what those mean values are.
+
+```{r}
+# apply and across could do some of this for us, but let's go over it w for loops for practice!
+
+#remember, seq_along gives a length of the number of COLUMNS in a data frame!
+
+df_means <- function(df) {
+  for (i in seq_along(df)) {
+    col_mean <- round(mean(df[[i]], na.rm = TRUE), 2) # double square brakcets to get just the vector of values from that column in the data frame.
+    column_name <- colnames(df[i]) # gets the name of the i-th column of the data frame
+    print(paste("The mean value of", column_name, "is", col_mean))
+  }
+}
+```
+
+```{r}
+df_means(df = mtcars)
+```
+
+```{r}
+# colnames(mtcars[2]) # returns "cyL"
+
+# colnames(mtcars[[2]]) # returns "NULL"
 ```
