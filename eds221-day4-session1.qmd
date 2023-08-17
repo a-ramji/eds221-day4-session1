@@ -107,4 +107,50 @@ double_value_2(dollars = 10) * 0.08
 
 Print: "show me", Return: "store this so I can use it later"
 
-## 
+## Functions with Conditions
+
+```{r}
+calculate_animal_age <- function(animal, age_human_years) {
+  if (animal == "dog") {
+   # age = 
+      age_human_years * 7
+  } else if (animal == "goat") {
+  #  age = 
+      age_human_years * 4.7
+  } else 
+    print(paste("Sorry, I only calculate dog and goat ages"))
+}
+```
+
+```{r}
+calculate_animal_age(animal = "dog", age_human_years = 10)
+
+calculate_animal_age(animal = "goat", age_human_years = 4)
+
+# in this last example, nothing happens. You don't get an error -- your if statements aren't even evaluated. 
+# Once we update the function above to include an "else" statement message, we get a more helpful experience. 
+calculate_animal_age(animal = "whale", age_human_years = 10)
+```
+
+Write a function that, given temperature in Kelvin, if a user selects "metric" to the scale then return degrees Celsius, or if they select "english" then return degrees in Fahrenheit.
+
+```{r}
+convert_kelvin <- function(initial_temp_k, scale) {
+  if (scale == "metric") {
+    return(initial_temp_k - 273.15)
+  } else if (scale == "english") {
+    return(((initial_temp_k - 273.15) * (9/5) + 32))
+  } else
+    print("I'm sorry, I only convert degrees Kelvin to Celsius or Fahrenheit")
+}
+```
+
+```{r}
+convert_kelvin(initial_temp_k = 40, scale = "metric")
+```
+
+```{r}
+convert_kelvin(100, "metric")
+convert_kelvin(100, "english")
+convert_kelvin(100, "kelvin")
+```
