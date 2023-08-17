@@ -160,7 +160,7 @@ convert_kelvin(100, "english")
 convert_kelvin(100, "kelvin")
 ```
 
-### After Lunch :) 
+### After Lunch :)
 
 ## More functions
 
@@ -225,4 +225,49 @@ df_means(df = mtcars)
 # colnames(mtcars[2]) # returns "cyL"
 
 # colnames(mtcars[[2]]) # returns "NULL"
+```
+
+## Adding helpful error and warning messages
+
+Create a function to calculate the Betz Limit:
+
+Air density: kg / m\^3
+
+Rotor radius: meters
+
+Wind velocity: m/s
+
+Power: Watts (output)
+
+```{r}
+calculate_betz_windpower <- function(air_density,
+                                     rotor_radius,
+                                     wind_velocity) {
+  
+  if (wind_velocity > 130) {
+    warning("Whoa, that's a pretty high windspeed! Are you sure that's correct?")
+  }
+  
+  if (rotor_radius < 0) {
+    stop("Rotor radius must be a positive value (meters)")
+  }
+  
+   if (air_density > 1.225) {
+    warning("That air density is suspicious.")
+  }
+  
+  0.3 * air_density * pi * (rotor_radius ^ 2) * (wind_velocity ^ 3)
+}
+```
+
+```{r}
+calculate_betz_windpower(air_density = 1.2, rotor_radius = 30, wind_velocity = 50)
+```
+
+```{r}
+calculate_betz_windpower(air_density = 1, rotor_radius = 20, wind_velocity = 1020)
+```
+
+```{r}
+calculate_betz_windpower(air_density = 1.2, rotor_radius = -1, wind_velocity = 100)
 ```
