@@ -1,0 +1,110 @@
+---
+title: "EDS 221 Day 4 Computer Session 1"
+author: "Anna Ramji"
+format: html
+editor: visual
+---
+
+## Functions
+
+make a function that doubles a value.
+
+```{r}
+double_value <- function(my_dollars) {
+  print(2 * my_dollars)
+}
+```
+
+```{r}
+double_value(2)
+double_value(my_dollars = 10.13)
+```
+
+```{r}
+# returns error bc only expecting one numeric argument
+#double_value(my_dollars = 10.13, 5)
+```
+
+```{r}
+monthly_income <- c(42.50, 61.75, 89.50)
+
+# uses function on every value in the vector 
+
+double_value(monthly_income)
+```
+
+Create a function that returns an awesome restaurant name given a cool animal and your favorite food.
+
+```{r}
+name_restaurant <- function(animal, food) {
+  return(paste0(animal, food))
+}
+```
+
+```{r}
+name_restaurant(animal = "Hawk", food = "Pizza")
+```
+
+Given temperature in degrees Fahrenheit, write a function that converts it to Celsius.
+
+(°F − 32) × 5/9 = 0°C
+
+```{r}
+f_to_c <- function(f_temp) {
+  converted_temp = round((((f_temp - 32) * 5) / 9), digits = 2)
+  return(paste(f_temp, "degrees Fahrenheit is",
+                 converted_temp, "degrees Celsius"))
+}
+```
+
+```{r}
+f_to_c(f_temp = 52)
+f_to_c(100)
+```
+
+OR
+
+```{r}
+convert_f_to_c <- function(temp_f) {
+  converted_temp = round((((temp_f - 32) * 5) / 9), digits = 2)
+  print(converted_temp)
+}
+```
+
+```{r}
+convert_f_to_c(temp_f = 52)
+```
+
+Create a function that given inputs of age and hometown, returns "I am \_\_ years old, and I'm from \_\_"
+
+```{r}
+about_me <- function(age, hometown) {
+  print(paste0("I am ", age, " years old, and I'm from ", hometown, "."))
+}
+```
+
+```{r}
+about_me(23, "San Anselmo")
+```
+
+We don't always want to print immediately.
+
+We also don't always need to say "return" in R
+
+-   it's storing the value for you automatically
+
+```{r}
+double_value_2 <- function(dollars) {
+  dollars * 2
+}
+```
+
+```{r}
+double_value_2(dollars = 10) * 0.08
+```
+
+#### Print statements and return statements
+
+Print: "show me", Return: "store this so I can use it later"
+
+## Functions with Conditions
